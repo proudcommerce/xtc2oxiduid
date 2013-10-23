@@ -17,6 +17,7 @@
 * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 *
 **/ 
+error_reporting(0);
 session_start();
 define( 'XTC2OXIDUI_BASEDIR', dirname( __FILE__ ) );
 

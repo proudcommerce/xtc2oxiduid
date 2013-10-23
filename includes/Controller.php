@@ -252,7 +252,7 @@ class XTC2OXIDUI_Controller {
 
 		//customers
 		if (true == $this->GetSettingFromRequest('oxid-import-customers', true)) {
-			$html .= '<b>Migrate Customers:</b> done<br/>';
+			$html .= '<b>Migrate Customers:</b> done.<br/>';
 			$html .= $this->MigrateCustomers($oIHandler, $xtc);
 			$html .= '<br/>';
 		}

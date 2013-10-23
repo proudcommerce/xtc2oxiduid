@@ -253,6 +253,7 @@ class ImportHandler {
 		//Avenger
 	}
 
+	
 	/**
 	 * Deletes all items
 	 *
@@ -353,8 +354,8 @@ class ImportHandler {
 			oxsort, 
 			oxtitle, 
 			oxthumb,
-			0 AS oxpricefrom,
-			0 AS oxpriceto
+			oxpricefrom,
+			oxpriceto		
 			' . $this->_sInclField . ')
 			(
 			SELECT 
@@ -365,7 +366,9 @@ class ImportHandler {
 			parent_id, 
 			sort_order, 
 			categories_name, 
-			categories_image
+			categories_image,
+			0.0,
+			0.0		
 			' . $this->_sInclFieldVal . '
           FROM 
 			' . $sOcmDb . '.categories AS c, 
@@ -527,10 +530,9 @@ class ImportHandler {
         WHERE 
 			a.customers_id = c.customers_id and
 			cox.countries_id=a.entry_country_id and
-			coo.oxisoalpha2=cox.countries_iso_code_2 and
-			c.customers_id>1
+			coo.oxisoalpha2=cox.countries_iso_code_2 
         )';
-
+		
 		$oRs = $oxDB->Execute($sQ);
 		$error = $oxDB->ErrorMsg();
 
@@ -635,7 +637,7 @@ class ImportHandler {
 	 * @param boolean $shopSystem If is true, we import from xtc
 	 * 
 	 */
-	public function importProducts($shopSystem) {
+	public function importProducts($shopSystem = false) {
 		$iLangCount = $this->_iLangCount;
 		$sOcmDb		= $this->_sOcmDb;
 		$sShopId	= $this->_sShopId;
